@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(15, 28, 48);
+
+}
+
+#usuario {
+    background-color: rgb(7, 15, 133); /* Cor de fundo */
+    width: 20em; /* Largura do contêiner */
+    margin: 20px auto; /* Margem superior/inferior de 20px e centralização horizontal */
+    padding: 20px; /* Adiciona espaçamento interno */
+    display: block; /* O elemento é exibido como um bloco */
+    text-align: center; /* Centraliza o texto */
+    color: rgb(102, 35, 33); /* Cor do texto */
+    font-style: oblique; /* Estilo do texto em itálico */
+    font-size: 2em; /* Tamanho da fonte */
+    border-radius: 10px; /* Arredonda os cantos do contêiner */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra sutil */
+}
+
+
+button#buscarBotao{
+    padding: 10px;
+    border-radius: 10rem;
+    text-transform: uppercase;
+    transition: all .5s;
+    letter-spacing: .15rem;
+    width: 17em;
+    margin: 10% auto 0 auto;
+    display: block;
+}

@@ -1,4 +1,4 @@
-const { criarUsuario } = require('./db');
+//const { criarUsuario } = require('./db');
 
 async function procuraNome() {
     try {
@@ -11,7 +11,9 @@ async function procuraNome() {
         const dob = new Date(user.dob.date);
         const age = calculaIdade(dob);
 
-        await criarUsuario({ name, email, dob, age})
+//        await criarUsuario({ name, email, dob, age });
+
+        atualizarInterface(name, email, dob.toLocaleDateString(), age);
 
         console.log(`Nome: ${name}`);
         console.log(`Email: ${email}`);
@@ -34,4 +36,11 @@ function calculaIdade(dob) {
     return age;
 }
 
-procuraNome();
+function atualizarInterface(name, email, dob, age) {
+    document.getElementById("nome").innerHTML = `Nome: ${name} <br>`;
+    document.getElementById("email").innerHTML = `Email: ${email} <br>`;
+    document.getElementById("data_nascimento").innerHTML = `Data de Nascimento: ${dob} <br>`;
+    document.getElementById("idade").innerHTML = `Idade: ${age} <br>`;
+}
+
+document.getElementById("buscarBotao").addEventListener('click', procuraNome);
