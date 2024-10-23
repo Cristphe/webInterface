@@ -5,11 +5,9 @@ const { Client } = require('pg');
 const app = express();
 const PORT = 3000;
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Função para criar uma nova conexão com o banco de dados
 const criarConexao = () => {
     return new Client({
         user: 'postgres',
@@ -20,7 +18,6 @@ const criarConexao = () => {
     });
 };
 
-// Rota para adicionar um usuário
 app.post('/usuarios', async (req, res) => {
     const { name, email, dob, age } = req.body;
     const query = `
@@ -30,17 +27,17 @@ app.post('/usuarios', async (req, res) => {
     `;
     const values = [name, email, dob, age];
 
-    const cliente = criarConexao(); // Cria uma nova instância do Client
+    const cliente = criarConexao();
 
     try {
-        await cliente.connect(); // Conecta-se ao banco de dados
+        await cliente.connect();
         const result = await cliente.query(query, values);
         res.status(201).json(result.rows[0]);
     } catch (error) {
         console.error('Erro ao adicionar usuário:', error);
         res.status(500).json({ error: 'Erro ao adicionar usuário' });
     } finally {
-        await cliente.end(); // Desconecta após finalizar
+        await cliente.end();
     }
 });
 
