@@ -1,5 +1,3 @@
-//const { criarUsuario } = require('./db');
-
 async function procuraNome() {
     try {
         const response = await fetch('https://randomuser.me/api/');
@@ -11,14 +9,16 @@ async function procuraNome() {
         const dob = new Date(user.dob.date);
         const age = calculaIdade(dob);
 
-//        await criarUsuario({ name, email, dob, age });
-
         atualizarInterface(name, email, dob.toLocaleDateString(), age);
 
-        console.log(`Nome: ${name}`);
-        console.log(`Email: ${email}`);
-        console.log(`Data de Nascimento: ${dob.toLocaleDateString()}`);
-        console.log(`Idade: ${age}`);
+        await fetch('http://localhost:3000/usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, dob: dob.toISOString().split('T')[0], age }),
+        });
+
     } catch (error) {
         console.error('Erro ao buscar dados do usuário:', error);
     }
