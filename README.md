@@ -10,10 +10,16 @@ Coisas necessárias para o funcionamento:
 
 git clone https://github.com/Cristphe/webInterface.git
 
-> npm init
-> npm install pg //Banco de dados
-> npm install cors //Conseguir utilizar a API para compartilhamento de dados
-> npm install express //Requisições http
+```
+ npm init
+
+ npm install pg //Banco de dados
+
+ npm install cors //Conseguir utilizar a API para compartilhamento de dados
+
+ npm install express //Requisições http
+
+```
 
 Utilize a extensão live server e abra o index.html
 
